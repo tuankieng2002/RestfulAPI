@@ -1,0 +1,12 @@
+POST http://localhost:3000/api/v3/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzIyYTgwZTFkNTVlYTM4NGFkNzNmODQiLCJpYXQiOjE2NjMyMTY5NDV9.vmtFZcwvzkgeIqOjfs3RJP4V9zNmV7pX3OgqlM-JAnQ
+
+{
+    "title":"Sinh nhật",
+    "description":"quảy hết mình"
+}
+
+###
+GET http://localhost:3000/api/v3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzIyYTgwZTFkNTVlYTM4NGFkNzNmODQiLCJpYXQiOjE2NjMyMTY5NDV9.vmtFZcwvzkgeIqOjfs3RJP4V9zNmV7pX3OgqlM-JAnQ
