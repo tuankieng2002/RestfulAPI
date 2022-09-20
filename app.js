@@ -6,7 +6,8 @@ const bodyParser = require('body-parser');//body-parser là một middleware gi�
 // app.use(bodyParser.json());
 
 //Middleware
-app.use(express.json());
+app.use(express.json());//nếu thiếu express.json() thì req.body sẽ trả về undefined khi gửi dữ liệu lên server bằng postman hoặc form html bình thường (không có enctype="multipart/form-data")
+
 
 //Import Routes
 const postsRoute = require('./routes/posts');

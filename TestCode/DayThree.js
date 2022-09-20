@@ -54,7 +54,7 @@ console.log(ngu);*/
     else {return 0}
 })**/
 
-/**var mang = [{
+var mang = [{
     name: "thai",
     age: 20,
     score: 10
@@ -77,7 +77,15 @@ var newMang = mang.sort(function (a, b) {
     else {return 0}
 })
 
-console.log(newMang);**/
+
+console.log(newMang);
+//giải thích code trên
+//mảng mang có 3 phần tử
+//mỗi phần tử là 1 object có 3 thuộc tính name,age,score
+//sắp xếp mảng mang theo tuổi tăng dần
+//nếu tuổi bằng nhau thì sắp xếp theo điểm giảm dần
+
+
 
 /**var day = new Date();
 console.log(day.getMonth()+1);**/
@@ -174,23 +182,23 @@ console.log(nums);**/
 
 //bai 4:
 
-var prices =  [7,1,5,3,6,4]
-var loinhuan=0;
-var giamua= prices[0];//7
-var maxProfit = function(prices) {
-    for(var i = 0; i < prices.length; i++){
-        if(prices[i]<giamua){//1<7
-            giamua = prices[i];//1
-            //console.log(giamua);
-        }
-        if(prices[i]-giamua>loinhuan){//1-7>0?-6=>false
-            loinhuan = prices[i]-giamua;
-            console.log("prices:"+prices[i] +" Gimua:"+giamua+" loinhuan:"+loinhuan);
-            //console.log(loinhuan);
-        }
-    }
-};
-maxProfit(prices)
-console.log(loinhuan);
+// var prices =  [7,1,5,3,6,4]
+// var loinhuan=0;
+// var giamua= prices[0];//7
+// var maxProfit = function(prices) {
+//     for(var i = 0; i < prices.length; i++){
+//         if(prices[i]<giamua){//1<7
+//             giamua = prices[i];//1
+//             //console.log(giamua);
+//         }
+//         if(prices[i]-giamua>loinhuan){//1-7>0?-6=>false
+//             loinhuan = prices[i]-giamua;
+//             console.log("prices:"+prices[i] +" Gimua:"+giamua+" loinhuan:"+loinhuan);
+//             //console.log(loinhuan);
+//         }
+//     }
+// };
+// maxProfit(prices)
+// console.log(loinhuan);
 
 //th1: nếu giá trị trong mang prices[i] nhỏ
