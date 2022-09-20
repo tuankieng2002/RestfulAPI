@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Category = require('../model/Category');
-const verifyToken = require('../middleware/auth')
+
+const {verifyToken, admin} = require('../middleware/auth')
 
 //create a category
 router.post('/newCategory', verifyToken, async (req, res) => {
@@ -10,7 +11,7 @@ router.post('/newCategory', verifyToken, async (req, res) => {
     const category = new Category({
         name,
         description,
-        user: req.userId
+        users: req.userId
     });
     try {
         const savedCategory = await category.save();
@@ -22,7 +23,7 @@ router.post('/newCategory', verifyToken, async (req, res) => {
 
 //get all categories
 router.get('/', async (req, res) => {
-    const categories = await Category.find();
+    const categories = await Category.find().populate('users');
     try{
         res.status(200).json({success: true, categories});
     }catch(err){
@@ -33,6 +34,8 @@ router.get('/', async (req, res) => {
 //get single category
 router.get('/singleCategory/:id', async (req, res) => {
     try {
+        console.log(req.body);
+        //dùng populate dựa vào id của category để lấy tất cả dữ liệu của bảng category
         const category = await Category.findById(req.params.id);
         res.status(200).json({success: true, category})
     } catch (error) {

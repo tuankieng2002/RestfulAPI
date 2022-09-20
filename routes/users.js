@@ -46,7 +46,9 @@ router.post('/register', async (req, res) => {
 //login user
 router.post('/login', async (req, res) => {
     try {
-        const { email, password } = req.body;
+        let email =req.body.email;
+        let passwordd = req.body.password;
+
         let user = await User.findOne({ email });
         if (!user) {
             return res.status(400).json({
@@ -54,7 +56,9 @@ router.post('/login', async (req, res) => {
             });
         }
 
-        const passwordValid = await argon2.verify(user.password, password);
+        let { password, ...others } = user._doc;
+
+        const passwordValid = await argon2.verify(user.password, passwordd);
 
         if (!passwordValid) {
             return res.status(400).json({
@@ -63,7 +67,7 @@ router.post('/login', async (req, res) => {
         }
 
         //accessToken
-        const accessToken = jwt.sign({userId: user._id}, process.env.ACCESS_TOKEN_SECRET);
+        const accessToken = jwt.sign({userId: user._id, role: user.role, ...others}, process.env.ACCESS_TOKEN_SECRET);
 
         res.status(200).json({
             success: true,

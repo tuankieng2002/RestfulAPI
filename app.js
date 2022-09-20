@@ -13,10 +13,12 @@ app.use(express.json());//nếu thiếu express.json() thì req.body sẽ trả 
 const postsRoute = require('./routes/posts');
 const usersRoute = require('./routes/users');
 const categoriesRoute = require('./routes/category');
+const roomRoute = require('./routes/room');
 
 app.use('/api/v3/posts', postsRoute);
 app.use('/api/v3/users', usersRoute);
 app.use('/api/v3/category', categoriesRoute);
+app.use('/api/v3/room', roomRoute);
 
 //connect to DB
 const mongoose = require('mongoose');

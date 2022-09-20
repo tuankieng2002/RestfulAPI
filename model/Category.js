@@ -14,12 +14,13 @@ const CategorySchema = new Schema({
         type: Date,
         default: Date.now
     },
-    user: {
+    users: {
         //lay data tu ben User qua
         type: Schema.Types.ObjectId,
-        ref: 'users',
+        ref: 'Users',
         required: true
     }
+
 })
 
 module.exports = mongoose.model('Category', CategorySchema)

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
+const User = require('../model/User')
 
-const verifyToken = async (req, res, next) => {
+exports.verifyToken = async (req, res, next) => {
 	const authHeader = req.header('Authorization')
 	const token = authHeader && authHeader.split(' ')[1]//cat va lay phan tu thu 2
 
@@ -20,4 +21,13 @@ const verifyToken = async (req, res, next) => {
 	}
 }
 
-module.exports = verifyToken
+// Admin Roles
+exports.isAdmin = async (req, res, next) => {
+	const user = await User.findById(req.userId)
+	if (user.role !== 'admin')
+		return res
+			.status(403)
+			.json({ success: false, message: 'Admin resources access denied' })
+
+	next()
+}

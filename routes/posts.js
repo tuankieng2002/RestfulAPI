@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../model/Post');
-const verifyToken = require('../middleware/auth')
+const {verifyToken, isAdmin} = require('../middleware/auth')
 const Category = require('../model/Category');
 const mongoose = require('mongoose');
+
 
 //get all posts
 router.get('/', verifyToken, async (req, res) => {
@@ -49,7 +50,7 @@ router.get('/category/:id',  async (req, res) => {
 });
 
 //create a post
-router.post('/newPosts', verifyToken, async (req, res) => {
+router.post('/newPosts', verifyToken, isAdmin,  async (req, res) => {
     console.log(req.body);
 
     if(!mongoose.isValidObjectId(req.body.category)){
